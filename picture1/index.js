@@ -32,7 +32,7 @@ function render(image) {
   // Set a rectangle the same size as the image.
   setRectangle(gl, 0, 0, image.width, image.height);
 
-  // provide texture coordinates for the rectangle.
+    // 给矩形提供纹理坐标
   var texcoordBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, texcoordBuffer);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
@@ -44,8 +44,9 @@ function render(image) {
       1.0,  1.0,
   ]), gl.STATIC_DRAW);
 
-  // Create a texture.
+  // 创建一个纹理
   var texture = gl.createTexture();
+  // 方法将给定的 WebGLTexture 绑定到目标
   gl.bindTexture(gl.TEXTURE_2D, texture);
 
   // 设置纹理参数 
@@ -59,7 +60,7 @@ function render(image) {
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
 
-  // Upload the image into the texture.
+  // 指定了二维纹理图像。
   gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
 
   // lookup uniforms
@@ -89,6 +90,9 @@ function render(image) {
   var normalize = false; // don't normalize the data
   var stride = 0;        // 0 = move forward size * sizeof(type) each iteration to get the next position
   var offset = 0;        // start at the beginning of the buffer
+  
+  // 方法绑定当前缓冲区范围到gl.ARRAY_BUFFER,成为当前顶点缓冲区对象的通用顶点属性并指定它的布局(缓冲区对象中的偏移量)。
+
   gl.vertexAttribPointer(
       positionLocation, size, type, normalize, stride, offset);
 

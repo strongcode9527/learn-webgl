@@ -52,6 +52,7 @@
     
     void main() {
        vec2 onePixel = vec2(1.0, 1.0) / u_textureSize;
+       // 在这里进行相加
        vec4 colorSum =
            texture2D(u_image, v_texCoord + onePixel * vec2(-1, -1)) * u_kernel[0] +
            texture2D(u_image, v_texCoord + onePixel * vec2( 0, -1)) * u_kernel[1] +

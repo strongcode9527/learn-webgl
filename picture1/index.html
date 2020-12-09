@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    @import url("https://webglfundamentals.org/webgl/resources/webgl-tutorials.css");
+body {
+  margin: 0;
+}
+canvas {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
+
+</style>
 <body>
     <canvas id="canvas"></canvas>
 <!-- vertex shader -->
@@ -12,6 +24,7 @@
 attribute vec2 a_position;
 attribute vec2 a_texCoord;
 
+// cavnas 大小
 uniform vec2 u_resolution;
 
 varying vec2 v_texCoord;
@@ -44,6 +57,8 @@ uniform sampler2D u_image;
 varying vec2 v_texCoord;
 
 void main() {
+   // texture2D函数，使用texture坐标coord来查找当前绑定到采样器的texture
+   // 换一种 bgra， rgba 红蓝相反。
    gl_FragColor = texture2D(u_image, v_texCoord);
 }
 </script><!--
